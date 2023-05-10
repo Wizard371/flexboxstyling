@@ -1,0 +1,108 @@
+/* FONT */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+/* GENERELT */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* DROPDOWN */
+
+
+/* Navigation Styling */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+}
+
+
+/* Styling af dropdown*/
+
+.dropdown {
+    position: relative;
+    margin-top: auto;
+}
+
+.dropdown-toggle {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 10px) scaleY(0);
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    top: calc(100% + 10px);
+}
+
+
+/* Animation til telefon */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dropdown:hover .dropdown-content {
+    transform: translateX(-50%) translateY(0) scaleY(1);
+}
+
+
+/* Styling af menu items */
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    transform: translateX(-50%) scaleY(1);
+}
+
+
+/* Responsiv del til mobil */
+
+@media only screen and (max-width: 600px) {
+    .nav {
+        flex-direction: column;
+    }
+    .dropdown {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .dropdown:hover .dropdown-content {
+        animation: none;
+    }
+}
+
+
+/* Fyld i hele header */
+
+.nav>* {
+    flex-grow: 1;
+    text-align: center;
+}
