@@ -1,23 +1,31 @@
-const dropdown = document.querySelector('.dropdown');
-const dropdownContent = document.querySelector('.dropdown-content');
+var toggle = document.querySelector('.dropdown-toggle');
+var content = document.querySelector('.dropdown-content');
 
-dropdown.addEventListener('mouseenter', () => {
-    let height = dropdownContent.offsetHeight;
-    let top = '100%';
-    if (window.innerWidth <= 767) { // change the breakpoint to match your mobile resolution
-        top = `${dropdown.offsetHeight}px`;
-    }
-    dropdownContent.style.top = `-${height}px`;
-    dropdownContent.style.display = 'block';
-
-    setTimeout(() => {
-        dropdownContent.style.top = top;
-    }, 10);
+toggle.addEventListener('click', function() {
+    content.classList.toggle('show');
 });
 
-dropdown.addEventListener('mouseleave', () => {
-    dropdownContent.style.top = `-${dropdownContent.offsetHeight}px`;
-    setTimeout(() => {
-        dropdownContent.style.display = 'none';
-    }, 300);
-});
+
+
+// Get the "add to cart" buttons
+var addToCartButtons = document.querySelectorAll('.product button');
+
+// Get the cart total element
+var cartTotal = document.getElementById('cart-total');
+
+// Initialize the cart total to zero
+var total = 0;
+
+// Add event listeners to the "add to cart" buttons
+for (var i = 0; i < addToCartButtons.length; i++) {
+    addToCartButtons[i].addEventListener('click', function() {
+        // Get the price of the product associated with the button that was clicked
+        var price = parseInt(this.getAttribute('data-price'));
+
+        // Add the price to the cart total
+        total += price;
+
+        // Update the cart total element with the new total
+        cartTotal.textContent = total + ' DKK';
+    });
+}
