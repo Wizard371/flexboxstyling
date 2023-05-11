@@ -7,25 +7,25 @@ toggle.addEventListener('click', function() {
 
 
 
-// Get the "add to cart" buttons
+// Find "add to cart" knapperne
 var addToCartButtons = document.querySelectorAll('.product button');
 
-// Get the cart total element
+// Tag cart-total
 var cartTotal = document.getElementById('cart-total');
 
-// Initialize the cart total to zero
+// Sæt pris til 0
 var total = 0;
 
-// Add event listeners to the "add to cart" buttons
+// Event listeners til "add to cart"
 for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener('click', function() {
-        // Get the price of the product associated with the button that was clicked
+        // Pris på produkt
         var price = parseInt(this.getAttribute('data-price'));
 
-        // Add the price to the cart total
+        // Tilføj pris
         total += price;
 
-        // Update the cart total element with the new total
+        // Opdater price total
         cartTotal.textContent = total + ' DKK';
     });
 }
